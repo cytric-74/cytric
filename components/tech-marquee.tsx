@@ -10,24 +10,23 @@ const techItems = [
   "POWERBI",
   "LATENCY",
   "TABLEAU",
-  "OPENAI",
+  "LANGCHAIN",
   "JAVASCRIPT",
-  "WEBGL",
+  "REACT",
   "NODE.JS",
-  "PRECISION",
 ]
 
 const concepts = [
-  "SYSTEM",
-  "ARCHITECTURE",
-  "INTERFACES",
-  "ALGORITHMS",
-  "EMERGENCE",
-  "COGNITION",
-  "SYNTHESIS",
-  "VELOCITY",
+  "DATA ANALYSIS",
+  "MACHINE LEARNING",
+  "NLP LLMs",
+  "GEN AI",
+  "CONVERGENCE",
+  "DATA STRUCTURES",
+  "RESNET",
+  "NEURAL NETWORKS",
   "ENTROPY",
-  "FLUX",
+  "SYSTREM PIPELINE",
   "AXIOM",
   "TENSOR",
 ]
@@ -48,7 +47,7 @@ function MarqueeRow({ items, direction = "left" }: { items: string[]; direction?
             style={{
               WebkitTextStroke: "1px rgba(255,255,255,0.3)",
               color: "transparent",
-              transition: "all 0.3s ease",
+              transition: "all 0.5s ease",
             }}
             onMouseEnter={(e) => {
               const el = e.currentTarget as HTMLElement
