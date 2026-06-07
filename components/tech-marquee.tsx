@@ -24,7 +24,7 @@ const concepts = [
   "RESNET",
   "NEURAL NETWORKS",
   "ENTROPY",
-  "SYSTEM PIPELINE",,
+  "SYSTEM PIPELINE",
   "TENSOR",
 ]
 
