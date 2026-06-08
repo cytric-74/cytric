@@ -74,7 +74,7 @@ export function TechMarquee() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        transition={{ duration: 0.8 }}
+        transition={{ duration: 0.5 }}
         className="px-8 md:px-12 mb-16"
       >
         <p className="font-mono text-sm tracking-[0.3em] text-muted-foreground mb-4">04 — TECHNICAL ARSENAL</p>
