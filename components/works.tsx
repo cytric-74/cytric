@@ -79,7 +79,7 @@ export function Works() {
 
               {/* Title */}
               <motion.h3
-                className="flex-1 font-sans text-4xl md:text-6xl lg:text-7xl font-light tracking-tight text-white group-hover:text-[#2563eb] transition-colors duration-150"
+                className="flex-1 font-sans text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white group-hover:text-[#2563eb] transition-colors duration-150"
                 animate={{
                   x: hoveredIndex === index ? 20 : 0,
                 }}
@@ -97,7 +97,7 @@ export function Works() {
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[10px] tracking-wider px-3 py-1 border border-white/20 rounded-full text-muted-foreground"
+                    className="font-mono text-[15px] tracking-wider px-3 py-1 border border-white/20 rounded-full text-muted-foreground"
                   >
                     {tag}
                   </span>
