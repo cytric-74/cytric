@@ -8,7 +8,7 @@ const projects = [
     title: "Northstar - KPI intelligence",
     tags: ["Python", "PowerBI", "SQL", "StreamLit"],
     year: "2026",
-    href: "https://github.com/cytric-74/",
+    href: "https://github.com/cytric-74/northstar",
   },
   {
     title: "PINNs for FLuid Dynamics",
