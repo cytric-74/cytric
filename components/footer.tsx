@@ -101,7 +101,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor-hover
-                className="font-mono text-sm tracking-[0.35em] text-muted-foreground hover:text-[#2563eb] hover:-translate-y-1 transition-all duration-300"
+                className="font-mono text-xs md:text-sm tracking-[0.35em] text-muted-foreground hover:text-[#2563eb] hover:-translate-y-1 transition-all duration-300"
               >
                 {link.label}
               </a>
