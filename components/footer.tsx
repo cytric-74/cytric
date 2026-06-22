@@ -67,7 +67,7 @@ export function Footer() {
               animate={{ color: isHovered ? "#050505" : "#fafafa" }}
               transition={{ duration: 0.3 }}
             >
-              Let's <span className="italic">Collaborate</span>
+              Let&apos;s <span className="italic">Collaborate</span>
             </motion.h2>
 
             <motion.div
