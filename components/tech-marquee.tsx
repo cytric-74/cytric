@@ -16,8 +16,8 @@ const techItems = [
 
 const concepts = [
   "DATA ANALYTICS",
-  "MACHINE LEARNING",
-  "NLP LLMs",
+  "MLops",
+  "NLP LLMops",
   "DATA ORCHESTRATION",
   "CFD",
   "DATA STRUCTURES",

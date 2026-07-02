@@ -63,7 +63,7 @@ export function Footer() {
         <div className="relative py-12 md:py-16 px-8 md:px-12 border-t border-white/10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <motion.h2
-              className="font-sans text-4xl md:text-6xl lg:text-8xl font-light tracking-tight text-center md:text-left"
+              className="font-sans text-3xl md:text-6xl lg:text-8xl font-light tracking-tight text-center md:text-left"
               animate={{ color: isHovered ? "#050505" : "#fafafa" }}
               transition={{ duration: 0.3 }}
             >

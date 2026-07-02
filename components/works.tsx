@@ -18,7 +18,7 @@ const projects = [
   },
   {
     title: "Feel CV - resume parser",
-    tags: ["Javascript", "CSS", "Langchain"],
+    tags: ["Javascript", "CSS", "Langchain", "ETL"],
     year: "2025",
     href: "https://github.com/cytric-74/feel-cv",
   },
@@ -30,7 +30,7 @@ const projects = [
   },
   {
     title: "inkGuard - signature forgery",
-    tags : ["VAE", "Siamese", "ML", "Image Processing"],
+    tags : ["VAE", "Siamese", "MLops", "REST API"],
     year: "2026",
     href: "https://github.com/cytric-74/inkGuard"
   }
