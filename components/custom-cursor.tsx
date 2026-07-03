@@ -57,7 +57,7 @@ export function CustomCursor() {
           scale: isHovering ? 0 : 5,
           opacity: isVisible ? 1 : 0,
         }}
-        transition={{ type: "spring", stiffness: 300, damping: 28, mass: 0.4 }}
+        transition={{ type: "spring", stiffness: 300, damping: 20, mass: 0.4 }}
       />
       {/* Hover ring */}
       <motion.div
