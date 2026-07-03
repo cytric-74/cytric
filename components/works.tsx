@@ -26,7 +26,7 @@ const projects = [
     title: "Blue Qants analytics",
     tags: ["PowerBI", "cPython", "Django", "SQLlite"],
     year: "2023",
-    href: "https://github.com/cytric-74/Blue_Quants",
+    href: "https://blue-quants.onrender.com/",
   },
   {
     title: "inkGuard - signature forgery",
