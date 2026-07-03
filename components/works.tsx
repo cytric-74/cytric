@@ -18,13 +18,13 @@ const projects = [
   },
   {
     title: "Feel CV - resume parser",
-    tags: ["Javascript", "CSS", "Langchain", "ETL"],
+    tags: ["Javascript", "CSS", "LLMops", "ETL"],
     year: "2025",
     href: "https://github.com/cytric-74/feel-cv",
   },
   {
     title: "Blue Qants analytics",
-    tags: ["PowerBI", "cPython", "Django", "SQLlite"],
+    tags: ["PowerBI", "cPython", "Django", "SQLlite", "Render"],
     year: "2023",
     href: "https://blue-quants.onrender.com/",
   },
