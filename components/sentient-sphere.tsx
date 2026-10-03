@@ -3,7 +3,24 @@
 import { useRef, useMemo, useEffect, useState } from "react"
 import { Canvas, useFrame, useThree } from "@react-three/fiber"
 import { MathUtils } from "three"
-import type { Mesh, ShaderMaterial } from "three"
+import type { Mesh, PerspectiveCamera, ShaderMaterial } from "three"
+
+const baseFov = 45
+const baseHalfFovTan = Math.tan(MathUtils.degToRad(baseFov / 2))
+
+function FitCamera() {
+  useFrame((state) => {
+    const camera = state.camera as PerspectiveCamera
+    const aspect = state.size.width / state.size.height
+    const fov = aspect < 1 ? MathUtils.radToDeg(2 * Math.atan(baseHalfFovTan / aspect)) : baseFov
+    if (camera.fov !== fov) {
+      camera.fov = fov
+      camera.updateProjectionMatrix()
+    }
+  })
+
+  return null
+}
 
 function Sphere() {
   const meshRef = useRef<Mesh>(null)
@@ -131,10 +148,20 @@ function Sphere() {
 /* eslint-disable react-hooks/set-state-in-effect */
 export function SentientSphere() {
   const [mounted, setMounted] = useState(false)
+  const [inView, setInView] = useState(true)
+  const canvasRef = useRef<HTMLCanvasElement>(null)
   // eslint-disable-next-line react-hooks/set-state-in-effect
   useEffect(() => {
     setMounted(true)
   }, [])
+
+  useEffect(() => {
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const observer = new IntersectionObserver(([entry]) => setInView(entry.isIntersecting))
+    observer.observe(canvas)
+    return () => observer.disconnect()
+  }, [mounted])
 
   if (!mounted) {
     return (
@@ -146,15 +173,18 @@ export function SentientSphere() {
 
   return (
     <Canvas
-      camera={{ position: [0, 0, 5], fov: 45 }}
+      ref={canvasRef}
+      camera={{ position: [0, 0, 5], fov: baseFov }}
       className="w-full my-0 h-full py-0"
       dpr={[1, 2]}
+      frameloop={inView ? "always" : "never"}
       gl={{
         antialias: true,
         alpha: true,
       }}
     >
       <ambientLight intensity={0.5} />
+      <FitCamera />
       <Sphere />
     </Canvas>
   )

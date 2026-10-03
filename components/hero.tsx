@@ -15,14 +15,14 @@ export function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.8])
 
   return (
-    <section ref={containerRef} className="relative h-screen w-full overflow-hidden bg-[#050505]">
+    <section ref={containerRef} className="relative h-screen supports-[height:100svh]:h-svh w-full overflow-hidden bg-[#050505]">
       {/* 3D Sphere Background */}
       <div className="absolute inset-0">
         <SentientSphere />
       </div>
 
       {/* Typography Overlay */}
-      <motion.div style={{ opacity, scale }} className="relative z-10 h-full flex flex-col justify-between p-8 md:p-12 md:px-12 md:py-20">
+      <motion.div style={{ opacity, scale }} className="relative z-10 h-full flex flex-col justify-between px-8 py-20 md:p-12 md:px-12 md:py-20">
         {/* Top Left */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
@@ -57,7 +57,7 @@ export function Hero() {
           data-cursor-hover
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
-          className="relative px-8 py-4 border border-white/20 rounded-full font-mono text-sm tracking-widest uppercase bg-transparent backdrop-blur-sm hover:bg-white hover:text-black transition-colors duration-500"
+          className="relative px-8 py-4 border border-white/20 rounded-full font-mono text-sm tracking-widest uppercase bg-transparent backdrop-blur-sm hover:bg-white hover:text-black active:bg-white active:text-black transition-colors duration-500"
         >
           RESUME
           <span className="absolute -top-1 -right-1 w-2 h-2 bg-[#2563eb] rounded-full animate-pulse" />

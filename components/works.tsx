@@ -2,6 +2,7 @@
 
 import { useState } from "react"
 import { motion } from "framer-motion"
+import { usePressHover } from "./use-press-hover"
 
 const projects = [
   {
@@ -38,9 +39,10 @@ const projects = [
 
 export function Works() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const pressHover = usePressHover()
 
   return (
-    <section id="works" className="relative py-32 px-8 md:px-12 md:py-12">
+    <section id="works" className="relative py-12 px-8 md:px-12 md:py-12">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -68,24 +70,25 @@ export function Works() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.1 }}
             className="relative border-t border-white/10 py-8 md:py-12"
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(null)}
+            {...pressHover((hovered) =>
+              setHoveredIndex((current) => (hovered ? index : current === index ? null : current)),
+            )}
           >
             <a
               href={project.href}
               target="_blank"
               rel="noopener noreferrer"
               data-cursor-hover
-              className="group flex flex-col md:flex-row md:items-center justify-between gap-4"
+              className="group grid grid-cols-[auto_1fr] items-center justify-between gap-4 md:flex md:flex-row"
             >
               {/* Year */}
-              <span className="font-mono text-xs text-muted-foreground tracking-widest order-1 md:order-none">
+              <span className="font-mono text-[11px] md:text-xs text-muted-foreground tracking-widest">
                 {project.year}
               </span>
 
               {/* Title */}
               <motion.h3
-                className="flex-1 font-sans text-4xl md:text-5xl lg:text-6xl font-light tracking-tight text-white group-hover:text-[#2563eb] transition-colors duration-150"
+                className="flex-1 font-sans text-3xl md:text-5xl lg:text-6xl font-light tracking-tight text-white group-hover:text-[#2563eb] group-active:text-[#2563eb] transition-colors duration-150"
                 animate={{
                   x: hoveredIndex === index ? 20 : 0,
                 }}
@@ -99,11 +102,11 @@ export function Works() {
               </motion.h3>
 
               {/* Tags */}
-              <div className="flex gap-2 flex-wrap order-2 md:order-none">
+              <div className="flex gap-2 flex-wrap col-start-2">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[15px] tracking-wider px-3 py-1 border border-white/20 rounded-full text-muted-foreground"
+                    className="font-mono text-[12px] md:text-[15px] tracking-wider px-3 py-1 border border-white/20 rounded-full text-muted-foreground"
                   >
                     {tag}
                   </span>

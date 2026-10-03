@@ -10,7 +10,7 @@ const statements = [
 ]
 
 export function About() {
-  const duplicatedStatements = [...statements, ...statements, ...statements]
+  const duplicatedStatements = [...statements, ...statements, ...statements, ...statements]
 
   return (
     <section id="about" className="relative pt-16 pb-8 overflow-hidden">
@@ -34,19 +34,21 @@ export function About() {
       {/* Marquee */}
       <div className="overflow-hidden py-6">
         <motion.div
-          className="flex gap-8 animate-marquee-left whitespace-nowrap"
-          style={{ width: "fit-content" }}
+          className="flex animate-marquee-left whitespace-nowrap"
+          style={{ width: "fit-content", animationDuration: "67s" }}
         >
           {duplicatedStatements.map((statement, index) => (
             <span
               key={index}
               className="
+                mr-8
                 text-3xl
                 md:text-5xl
                 lg:text-5xl
                 font-light
                 text-white/70
                 hover:text-white
+                active:text-white
                 transition-colors
                 duration-300
               "

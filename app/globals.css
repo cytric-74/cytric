@@ -77,6 +77,16 @@
 
 /* Base layer equivalent of your @layer base block */
 @layer base {
+  html,
+  body {
+    overflow-x: hidden;
+    overflow-x: clip;
+  }
+
+  html {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   body {
     @apply bg-background text-foreground;
   }

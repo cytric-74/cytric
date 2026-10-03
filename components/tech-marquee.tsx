@@ -1,6 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
+import { usePressHover } from "./use-press-hover"
 
 const techItems = [
   "PYTHON",
@@ -28,34 +29,31 @@ const concepts = [
   "TENSOR",
 ]
 
+const setFilled = (filled: boolean, el: HTMLElement) => {
+  el.style.color = filled ? "white" : "transparent"
+  el.style.setProperty("-webkit-text-stroke", filled ? "none" : "1px rgba(255,255,255,0.3)")
+}
+
 function MarqueeRow({ items, direction = "left" }: { items: string[]; direction?: "left" | "right" }) {
   const duplicatedItems = [...items, ...items, ...items, ...items]
+  const pressHover = usePressHover()
 
   return (
     <div className="relative overflow-hidden py-4">
       <motion.div
-        className={`flex gap-8 ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`}
+        className={`flex ${direction === "left" ? "animate-marquee-left" : "animate-marquee-right"}`}
         style={{ width: "fit-content" }}
       >
         {duplicatedItems.map((item, index) => (
           <span
             key={index}
-            className="group font-sans text-2xl md:text-4xl lg:text-6xl font-light tracking-tight whitespace-nowrap cursor-default"
+            className="group mr-8 font-sans text-2xl md:text-4xl lg:text-6xl font-light tracking-tight whitespace-nowrap cursor-default"
             style={{
               WebkitTextStroke: "1px rgba(255,255,255,0.3)",
               color: "transparent",
               transition: "all 0.5s ease",
             }}
-            onMouseEnter={(e) => {
-              const el = e.currentTarget as HTMLElement
-              el.style.color = "white"
-              ;el.style.setProperty("-webkit-text-stroke", "none")
-            }}
-            onMouseLeave={(e) => {
-              const el = e.currentTarget as HTMLElement
-              el.style.color = "transparent"
-              ;el.style.setProperty("-webkit-text-stroke", "1px rgba(255,255,255,0.3)")
-            }}
+            {...pressHover(setFilled)}
           >
             {item}
             <span className="mx-8 text-white/20">•</span>

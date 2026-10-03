@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { motion } from "framer-motion"
 import { ArrowUpRight } from "lucide-react"
+import { usePressHover } from "./use-press-hover"
 
 const socialLinks = [
   {
@@ -26,6 +27,7 @@ const socialLinks = [
 export function Footer() {
   const [time, setTime] = useState("")
   const [isHovered, setIsHovered] = useState(false)
+  const pressHover = usePressHover()
 
   useEffect(() => {
     const updateTime = () => {
@@ -36,9 +38,14 @@ export function Footer() {
       setTime(`${hours}:${minutes}:${seconds}`)
     }
 
-    updateTime()
-    const interval = setInterval(updateTime, 10)
-    return () => clearInterval(interval)
+    let timeout: ReturnType<typeof setTimeout>
+    const tick = () => {
+      updateTime()
+      timeout = setTimeout(tick, 1000 - (Date.now() % 1000))
+    }
+
+    tick()
+    return () => clearTimeout(timeout)
   }, [])
 
   return (
@@ -48,8 +55,7 @@ export function Footer() {
         href="mailto:workatrohh@gmail.com"
         data-cursor-hover
         className="relative block overflow-hidden"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+        {...pressHover(setIsHovered)}
       >
         {/* Background Curtain */}
         <motion.div
@@ -61,9 +67,9 @@ export function Footer() {
 
         {/* Content */}
         <div className="relative py-12 md:py-16 px-8 md:px-12 border-t border-white/10">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-8">
+          <div className="flex items-center justify-between gap-4 md:gap-8">
             <motion.h2
-              className="font-sans text-3xl md:text-6xl lg:text-8xl font-light tracking-tight text-center md:text-left"
+              className="font-sans text-3xl md:text-6xl lg:text-8xl font-light tracking-tight"
               animate={{ color: isHovered ? "#050505" : "#fafafa" }}
               transition={{ duration: 0.3 }}
             >
@@ -87,13 +93,13 @@ export function Footer() {
       <div className="px-8 md:px-12 py-12 md:py-16 border-t border-white/10">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           {/* Local Time */}
-          <div className="font-mono text-xs tracking-widest text-muted-foreground">
+          <div className="font-mono text-[10px] md:text-xs tracking-widest text-muted-foreground">
             <span className="mr-2">LOCAL TIME</span>
             <span className="text-white tabular-nums">{time}</span>
           </div>
 
           {/* Links */}
-          <div className="flex gap-8">
+          <div className="flex gap-2 md:gap-8">
             {socialLinks.map((link) => (
               <a
                 key={link.label}
@@ -101,7 +107,7 @@ export function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 data-cursor-hover
-                className="font-mono text-xs md:text-sm tracking-[0.35em] text-muted-foreground hover:text-[#2563eb] hover:-translate-y-1 transition-all duration-300"
+                className="font-mono text-[10px] md:text-sm tracking-[0.35em] text-muted-foreground hover:text-[#2563eb] hover:-translate-y-1 active:text-[#2563eb] active:-translate-y-1 transition-all duration-300"
               >
                 {link.label}
               </a>
@@ -109,7 +115,7 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="font-mono text-xs tracking-widest text-muted-foreground">
+          <p className="font-mono text-[10px] md:text-xs tracking-widest text-muted-foreground">
             © {new Date().getFullYear()}
           </p>
         </div>

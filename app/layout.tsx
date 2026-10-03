@@ -30,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${playfair.variable} ${geistMono.variable}`}>
-      <body className="font-sans antialiased overflow-x-hidden">
+      <body className="font-sans antialiased">
         <div className="noise-overlay" />
         {children}
         <Analytics />
